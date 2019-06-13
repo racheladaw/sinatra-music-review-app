@@ -5,8 +5,12 @@ class UsersController < ApplicationController
     erb :'/users/index'
   end
 
-  get '/users/new' do
-    erb :'/users/new'
+  get '/signup' do
+    if !logged_in?(session)
+      erb :'/users/new'
+    else
+      redirect "/users/#{current_user(session).slug}"
+    end
   end
 
   post '/users' do
@@ -15,7 +19,7 @@ class UsersController < ApplicationController
     if !params[:username].empty?
       User.all.each do |user|
         if user.username == params[:username]
-          redirect '/users/new'
+          redirect '/signup'
         end
       end
       u.username = params[:username]
@@ -24,12 +28,13 @@ class UsersController < ApplicationController
         redirect '/login'
       end
     else
-      redirect '/users/new'
+      redirect '/signup'
     end
   end
 
-  get '/users/:id' do
-    @user = User.find(params[:id])
+  get '/users/:slug' do
+    #binding.pry
+    @user = User.find_by_slug(params[:slug])
     erb :'/users/show'
   end
 
@@ -38,7 +43,7 @@ class UsersController < ApplicationController
     if !logged_in?(session)
       erb :'/users/login'
     else
-      redirect "/users/#{current_user(session).id}"
+      redirect "/users/#{current_user(session).slug}"
     end
   end
 
@@ -47,7 +52,7 @@ class UsersController < ApplicationController
     u = User.find_by(username: params[:username])
     if u && u.authenticate(params[:password])
       session[:user_id] = u.id
-      redirect "/users/#{u.id}"
+      redirect "/users/#{u.slug}"
     else
       redirect '/login'
     end
@@ -55,6 +60,7 @@ class UsersController < ApplicationController
 
   get '/logout' do
     session.clear
+    redirect '/login'
   end
 
 

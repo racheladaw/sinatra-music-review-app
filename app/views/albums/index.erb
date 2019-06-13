@@ -1,0 +1,11 @@
+<h1>Available Albums to Review</h1>
+
+<ol>
+  <% @albums.each do |album| %>
+    <li>
+    <h3><%= album.name %></h3>
+    Artist: <%= album.artist %><br>
+    Release Date: <%= album.release_date %><br>
+    </li>
+  <% end %>
+</ol>
