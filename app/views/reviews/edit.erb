@@ -1,0 +1,9 @@
+<h1>Edit Review of <%= @review.album.name %></h1>
+
+<form action="/reviews/<%= @review.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  
+  Rating: <input type="text" name="rating" value="<%= @review.rating %>">/10<br>
+  Content: <input type="text" name="content" value="<%= @review.content %>"><br>
+  <p><input type="submit" value="Update"></p>
+</form>

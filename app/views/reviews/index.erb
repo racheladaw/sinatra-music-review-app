@@ -8,6 +8,7 @@
       Rating: <%= review.rating %>/10<br>
       Content: <%= review.content %><br>
       Reviewed By: <%= review.user.username %><br>
+      <a href="/reviews/<%= review.id %>">View Review</a>
     </li><br>
   <% end %>
 <ul>
