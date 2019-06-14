@@ -25,4 +25,9 @@ class ReviewsController < ApplicationController
     end
   end
 
+  get '/reviews/:id' do
+    @review = Review.find(params[:id])
+    erb :'reviews/show'
+  end
+
 end
