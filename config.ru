@@ -6,4 +6,5 @@ end
 
 use UsersController
 use AlbumsController
+use ReviewsController
 run ApplicationController

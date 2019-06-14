@@ -11,22 +11,24 @@ class AlbumsController < ApplicationController
 
   post '/albums' do
     #binding.pry
-    if !params[:name].empty?
-      a = Album.new
-      Album.all.each do |album|
-        if params[:name] == album.name
-          redirect '/albums/new'
-        end
-      end
-      a.name = params[:name]
-      a.artist = params[:artist]
-      a.release_date = params[:release_date]
-      a.save
-      # current_user(session).albums << a
-      # current_user(session).save
+    a = Album.new(name: params[:name], artist: params[:artist], release_date: params[:release_date])
+    # Album.all.each do |album|
+    #   if params[:name] == album.name
+    #     redirect '/albums/new'
+    #   end
+    # end
+    # r = Review.new(rating: params[:rating], content: params[:content])
+    if a.save
+    # current_user(session).reviews << r
+    # a.reviews << r
       redirect '/albums'
     else
       redirect '/albums/new'
     end
+  end
+
+  get '/albums/:slug' do
+    @album = Album.find_by_slug(params[:slug])
+    erb :'/albums/show'
   end
 end

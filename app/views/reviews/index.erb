@@ -1,0 +1,16 @@
+<h1>Most Recent Reviews</h1>
+
+<ul>
+  <% @last_five_reviews.each do |review| %>
+    <li>
+      Album: <%= review.album.name %><br>
+      Artist: <%= review.album.artist %><br>
+      Rating: <%= review.rating %>/10<br>
+      Content: <%= review.content %><br>
+      Reviewed By: <%= review.user.username %><br>
+    </li><br>
+  <% end %>
+<ul>
+
+<h3>Write a new review</h3>
+<a href="/reviews/new">New Review</a>

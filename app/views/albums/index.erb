@@ -6,6 +6,14 @@
     <h3><%= album.name %></h3>
     Artist: <%= album.artist %><br>
     Release Date: <%= album.release_date %><br>
+    <a href="/albums/<%= album.slug %>">Album Page</a>
     </li>
   <% end %>
 </ol>
+
+<h3>Write a review</h3>
+<a href="/reviews/new">New Review</a>
+
+<h3>Don't see the album you want to review?</h3>
+
+<a href="/albums/new">Create New Album Here</a>

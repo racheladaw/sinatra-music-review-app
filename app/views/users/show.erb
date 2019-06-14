@@ -5,11 +5,25 @@
 <% if !@user.reviews.empty? %>
   <ul>
     <% @user.reviews.each do |review| %>
-      <li>Rating: <%= review.rating %>/10<br>
-        <%= review.content %>
+      <li>
+        Album Name: <%= review.album.name %><br>
+        Artist: <%= review.album.artist %><br>
+        Rating: <%= review.rating %>/10<br>
+        Review: <%= review.content %>
       </li><br>
     <% end %>
   </ul>
 <% end %>
+
+<h3>Albums reviewed by <%= @user.username %></h3>
+
+<ul>
+  <% @user.albums.each do |album| %>
+    <li>
+      Album: <%= album.name %><br>
+      Artist: <%= album.artist %>
+    </li><br>
+  <% end %>
+</ul>
 
 <a href="/logout">Log Out</a>
