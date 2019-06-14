@@ -64,4 +64,15 @@ class ReviewsController < ApplicationController
     end
   end
 
+  post '/reviews/:id/delete' do
+    @review = Review.find(params[:id])
+    if current_user(session) == @review.user
+      binding.pry
+      @review.destroy
+      redirect '/reviews'
+    else
+      redirect '/reviews'
+    end
+  end
+
 end

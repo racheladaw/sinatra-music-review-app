@@ -12,3 +12,8 @@
 </h5>
 
 <a href="/reviews/<%= @review.id %>/edit">Edit Review</a>
+
+<form action=<%= "/reviews/#{@review.id}/delete" %> method="post">
+  <br>
+  <input type="submit" value="Delete Review">
+</form>
