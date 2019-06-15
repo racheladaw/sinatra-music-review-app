@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
   end
 
   post '/reviews' do
-    binding.pry
+    #binding.pry
     if logged_in?(session)
       album = Album.find(params[:album_id])
       r = Review.new(rating: params[:rating], content: params[:content])
@@ -67,7 +67,7 @@ class ReviewsController < ApplicationController
   post '/reviews/:id/delete' do
     @review = Review.find(params[:id])
     if current_user(session) == @review.user
-      binding.pry
+      #binding.pry
       @review.destroy
       redirect '/reviews'
     else

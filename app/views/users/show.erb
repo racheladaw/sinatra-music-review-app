@@ -1,8 +1,9 @@
 <h1><%= @user.username %>'s Page</h1>
 
-<h3>Reviews</h3>
 
 <% if !@user.reviews.empty? %>
+  <h3>Reviews</h3>
+
   <ul>
     <% @user.reviews.each do |review| %>
       <li>
@@ -13,17 +14,18 @@
       </li><br>
     <% end %>
   </ul>
+
+  <h3>Albums reviewed by <%= @user.username %></h3>
+
+  <ul>
+    <% @user.albums.each do |album| %>
+      <li>
+        Album: <%= album.name %><br>
+        Artist: <%= album.artist %>
+      </li><br>
+    <% end %>
+  </ul>
+
+<% else %>
+  <h4><i><%= @user.username %> hasn't reviewed any albums yet</i></h4>
 <% end %>
-
-<h3>Albums reviewed by <%= @user.username %></h3>
-
-<ul>
-  <% @user.albums.each do |album| %>
-    <li>
-      Album: <%= album.name %><br>
-      Artist: <%= album.artist %>
-    </li><br>
-  <% end %>
-</ul>
-
-<a href="/logout">Log Out</a>

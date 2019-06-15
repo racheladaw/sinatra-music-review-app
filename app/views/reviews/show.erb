@@ -1,17 +1,19 @@
 <h1><%= @review.user.username %>'s Review</h1>
 
-<h4>Album: <%= @review.album.name %></h4>
-<h4>Artist: <%= @review.album.artist %></h4>
-<h4>Rating: <%= @review.rating %>/10</h4>
+<h5>Album:</h5> <%= @review.album.name %>
+<h5>Artist:</h5> <%= @review.album.artist %>
+<h5>Rating:</h5> <%= @review.rating %>/10
 <br>
-<h5>
+<br>
   <p>
-    Review:<br>
+    <h4><b>Review:</b></h4>
     <%= @review.content %>
   </p>
-</h5>
 
-<a href="/reviews/<%= @review.id %>/edit">Edit Review</a>
+
+<br>
+<br>
+<i><a href="/reviews/<%= @review.id %>/edit">Edit Review</a></i>
 
 <form action=<%= "/reviews/#{@review.id}/delete" %> method="post">
   <br>

@@ -3,13 +3,16 @@
 
 
 <form action="/reviews" method="post">
-  Select an Album: <select name="album_id">
+  <p>Select an Album: <select name="album_id">
     <% @albums.each do |album| %>
       <option value="<%= album.id %>"><%= album.name %></option>
     <% end %>
-  </select><br>
-  Album Rating: <input type="text" name="rating">/10<br>
-  Review Content: <input type="text" name="content"><br>
+  </select></p>
+
+  <p>Album Rating: <input type="text" name="rating">/10</p>
+
+  <p>Review Content: <input type="text" name="content"></p>
+  
   <input type="submit" name="Create Album">
 </form>
 <br>
