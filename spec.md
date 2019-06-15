@@ -15,7 +15,8 @@ Specs:
   - My Review model has a belongs_to :users relationship
 - [x] Include user accounts with unique login attribute (username or email)
   - I used ActiveRecord validations to validate the uniqueness of usernames for my User model
-- [ ] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
+- [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
+  - Reviews can be created, viewed, updated, and deleted
 - [ ] Ensure that users can't modify content created by other users
 - [x] Include user input validations
   - Users have to have unique usernames and must input a username and password
