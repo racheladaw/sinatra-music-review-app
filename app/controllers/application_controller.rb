@@ -10,7 +10,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    if logged_in?(session)
+      redirect '/reviews'
+    else
+      erb :welcome, :layout => false
+    end
   end
 
   helpers do
@@ -21,7 +25,7 @@ class ApplicationController < Sinatra::Base
 
     def current_user(session)
       User.find(session[:user_id])
-    end 
+    end
 
   end
 

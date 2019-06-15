@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   get '/signup' do
     if !logged_in?(session)
-      erb :'/users/new'
+      erb :'/users/new', :layout => false
     else
       redirect "/users/#{current_user(session).slug}"
     end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   get '/login' do
     #binding.pry
     if !logged_in?(session)
-      erb :'/users/login'
+      erb :'/users/login', :layout => false
     else
       redirect "/users/#{current_user(session).slug}"
     end
