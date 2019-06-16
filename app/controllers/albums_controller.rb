@@ -1,5 +1,4 @@
 class AlbumsController < ApplicationController
-  use Rack::Flash
 
   get '/albums' do
     if logged_in?(session)
@@ -25,7 +24,7 @@ class AlbumsController < ApplicationController
       if a.save
         redirect '/albums'
       else
-        flash[:message] = "Please fill out all fields. Album must not already exist."
+        flash.now[:message] = "Please fill out all fields. Album must not already exist."
         #binding.pry
         erb :'/albums/new'
       end

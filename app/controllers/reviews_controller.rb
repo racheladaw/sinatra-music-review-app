@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
         album.reviews << r
         redirect '/reviews'
       else
-        flash[:message] = "Please fill out all fields"
+        flash.now[:message] = "Please fill out all fields"
         erb :'/reviews/new'
       end
     else
@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
       if current_user(session) == @review.user
         erb :'/reviews/edit'
       else
-        flash[:message] = "You can't edit another user's reviews"
+        flash.now[:message] = "You can't edit another user's reviews"
         erb :'/reviews/show'
       end
     else
@@ -70,11 +70,11 @@ class ReviewsController < ApplicationController
         if @review.save
           redirect "reviews/#{@review.id}"
         else
-          flash[:message] = "You must fill out all fields"
+          flash.now[:message] = "You must fill out all fields"
           erb :'/reviews/edit'
         end
       else
-        flash[:message] = "You can't edit another user's reviews"
+        flash.now[:message] = "You can't edit another user's reviews"
         erb :'/reviews/show'
       end
     else
@@ -90,7 +90,7 @@ class ReviewsController < ApplicationController
         @review.destroy
         redirect '/reviews'
       else
-        flash[:message] = "You can't delete another user's reviews"
+        flash.now[:message] = "You can't delete another user's reviews"
         erb :'/reviews/show'
       end
     else

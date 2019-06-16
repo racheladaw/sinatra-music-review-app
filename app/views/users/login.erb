@@ -21,6 +21,9 @@ body, html {height: 100%}
   <div class="w3-display-middle">
     <h1 class="w3-jumbo w3-animate-top">Log In</h1>
     <hr class="w3-border-grey" style="margin:auto;width:40%">
+    <% if flash.has?(:message) %>
+      <h3><font color="red"><%= flash[:message] %></font></h3>
+    <% end %>
     <form action="/login" method="post">
       <p><input type="text" name="username" value="Username"></p>
       <p><input type="password" name="password" value="Password"></p>

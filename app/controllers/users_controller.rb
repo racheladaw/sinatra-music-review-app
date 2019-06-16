@@ -20,26 +20,24 @@ class UsersController < ApplicationController
   post '/users' do
     #binding.pry
     u = User.new
-    if !params[:username].empty?
-      User.all.each do |user|
-        if user.username == params[:username]
-          redirect '/signup'
-        end
-      end
-      u.username = params[:username]
-      u.password = params[:password]
-      if u.save
-        redirect '/login'
-      end
+    u.username = params[:username]
+    u.password = params[:password]
+    if u.save
+      redirect '/login'
     else
-      redirect '/signup'
+      flash.now[:message] = "You must fill out all fields. Username can't already be in use."
+      erb :'/users/new', :layout => false
     end
   end
 
   get '/users/:slug' do
     #binding.pry
-    @user = User.find_by_slug(params[:slug])
-    erb :'/users/show'
+    if logged_in?(session)
+      @user = User.find_by_slug(params[:slug])
+      erb :'/users/show'
+    else
+      redirect '/login'
+    end
   end
 
   get '/login' do
@@ -47,7 +45,9 @@ class UsersController < ApplicationController
     if !logged_in?(session)
       erb :'/users/login', :layout => false
     else
-      redirect "/users/#{current_user(session).slug}"
+      @user = current_user(session)
+      flash[:message] = "You're already logged in"
+      erb :'/users/show'
     end
   end
 
@@ -58,13 +58,18 @@ class UsersController < ApplicationController
       session[:user_id] = u.id
       redirect "/users/#{u.slug}"
     else
-      redirect '/login'
+      flash.now[:message] = "Username or password is incorrect"
+      erb :'/users/login', :layout => false
     end
   end
 
   get '/logout' do
-    session.clear
-    redirect '/login'
+    if logged_in?(session)
+      session.clear
+      redirect '/login'
+    else
+      redirect '/login'
+    end
   end
 
 
