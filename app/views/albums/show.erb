@@ -3,3 +3,16 @@
 <h4>Artist: <%= @album.artist %></h4>
 
 <h5><i>Release Date: <%= @album.release_date %></i></h5>
+
+
+
+<% if !@album.reviews.empty? %>
+  <h2>Reviews</h2>
+  <% @album.reviews.each do |review| %>
+    <p>
+      Reviewer: <%= review.user.username %><br>
+      <%= review.rating %>/10<br>
+      <a href="/reviews/<%= review.id %>">View Review</a>
+    </p>
+  <% end %>
+<% end %>
