@@ -4,27 +4,26 @@
 <% if !@user.reviews.empty? %>
   <h3>Reviews</h3>
 
-  <ul>
+  <ol>
     <% @user.reviews.each do |review| %>
       <li>
-        Album Name: <%= review.album.name %><br>
-        Artist: <%= review.album.artist %><br>
+        <%= review.album.name %>, By: <%= review.album.artist %><br>
         Rating: <%= review.rating %>/10<br>
-        Review: <%= review.content %>
+        <a href="/reviews/<%= review.id %>">View Review</a>
       </li><br>
     <% end %>
-  </ul>
+  </ol>
 
   <h3>Albums Reviewed By <%= @user.username %></h3>
 
-  <ul>
+  <ol>
     <% @user.albums.each do |album| %>
       <li>
         Album: <%= album.name %><br>
         Artist: <%= album.artist %>
       </li><br>
     <% end %>
-  </ul>
+  </ol>
 
 <% else %>
   <h4><i><%= @user.username %> hasn't reviewed any albums yet</i></h4>

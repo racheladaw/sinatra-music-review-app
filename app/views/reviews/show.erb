@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+  <h3><font color="red"><%= flash[:message] %></font></h3>
+<% end %>
+
 <h1><%= @review.user.username %>'s Review</h1>
 
 <h5>Album:</h5> <%= @review.album.name %>
