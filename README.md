@@ -4,6 +4,8 @@
 
 This web app allows you to review your favorite albums. You can view recent reviews, view available albums to review, create new albums, and write reviews.
 
+[Video Walkthrough](https://youtu.be/cM2Rz2VUbEg)
+
 To get started do the following:
 
 - Clone this repository
