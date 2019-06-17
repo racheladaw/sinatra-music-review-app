@@ -60,7 +60,6 @@ class ReviewsController < ApplicationController
   end
 
   patch '/reviews/:id' do
-    #binding.pry
     @review = Review.find(params[:id])
     if logged_in?(session)
 

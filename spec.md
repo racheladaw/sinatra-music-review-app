@@ -17,16 +17,22 @@ Specs:
   - I used ActiveRecord validations to validate the uniqueness of usernames for my User model
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
   - Reviews can be created, viewed, updated, and deleted
-- [ ] Ensure that users can't modify content created by other users
+- [x] Ensure that users can't modify content created by other users
+  - Users can only edit and delete their own reviews. If they attempt to edit or delete another user's reviews, they will be redirected and a flash message is displayed explaining the error.
 - [x] Include user input validations
   - Users have to have unique usernames and must input a username and password
   - Albums must have a unique album name and users must input the album name, artist, and release_date
-  - Reviews must have inputted content and ratings. It is also not possible to not associate the review to an album because I used a drop down list.
-- [ ] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+  - Reviews must have inputted content and ratings. The review form uses a drop-down for the album, so it is not possible for a user to not select an album.
+- [x] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
+  - I used rack flash to display error messages when users failed to fill out all fields or validations failed.
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+  - My readme has a description and installation instructions
+  - [ ] Need to add license info
 
 Confirm
-- [ ] You have a large number of small Git commits
-- [ ] Your commit messages are meaningful
-- [ ] You made the changes in a commit that relate to the commit message
-- [ ] You don't include changes in a commit that aren't related to the commit message
+- [x] You have a large number of small Git commits
+- [x] Your commit messages are meaningful
+- [x] You made the changes in a commit that relate to the commit message
+  - Some commits were larger than they should have been due to being forgetful about committing in a timely manner.
+- [x] You don't include changes in a commit that aren't related to the commit message
+  - This is mostly true, although sometimes I forgot to commit for each change.

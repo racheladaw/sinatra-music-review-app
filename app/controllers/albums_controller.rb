@@ -11,7 +11,6 @@ class AlbumsController < ApplicationController
 
   get '/albums/new' do
     if logged_in?(session)
-      #binding.pry
       erb :'/albums/new'
     else
       redirect '/login'
@@ -25,7 +24,6 @@ class AlbumsController < ApplicationController
         redirect '/albums'
       else
         flash.now[:message] = "Please fill out all fields. Album must not already exist."
-        #binding.pry
         erb :'/albums/new'
       end
     else

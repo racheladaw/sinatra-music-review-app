@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    #binding.pry
     u = User.new
     u.username = params[:username]
     u.password = params[:password]
@@ -31,7 +30,6 @@ class UsersController < ApplicationController
   end
 
   get '/users/:slug' do
-    #binding.pry
     if logged_in?(session)
       @user = User.find_by_slug(params[:slug])
       erb :'/users/show'
@@ -41,7 +39,6 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    #binding.pry
     if !logged_in?(session)
       erb :'/users/login', :layout => false
     else
@@ -52,7 +49,6 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    #binding.pry
     u = User.find_by(username: params[:username])
     if u && u.authenticate(params[:password])
       session[:user_id] = u.id

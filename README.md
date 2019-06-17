@@ -1,6 +1,6 @@
 # Beat Roaster
 
-### Thank you for downloading Beat Roaster!
+### Thank you for checking out Beat Roaster!
 
 This web app allows you to review your favorite albums. You can view recent reviews, view available albums to review, create new albums, and write reviews.
 
